@@ -5,4 +5,4 @@ from django.http import HttpResponse
 
 
 def homepage(request):
-    return HttpResponse("Welcome to <strong>Pure Beurre</strong>")
+    return render(request, 'index/base.html')
