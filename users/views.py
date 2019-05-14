@@ -11,16 +11,26 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)
+            # Normalising data for username
             username = form.cleaned_data.get('username')
-            messages.success(request, 'Votre compte a bien été crée')
+            messages.success(request, f'New Account Created:{username}')
+
+            login(request, user)
+            messages.info(request, f'You are now logged in as {username}')
+
             return redirect("index:homepage")
         else:
             for msg in form.error_messages:
-                print(form.error_messages[msg])
+                messages.error(request, f"{msg}:{form.error_messages[msg]}")
 
-    form = UserRegisterForm()
-    return render(request,
-                  "index/register.html",
-                  context={"form":form})
+    form = UserRegisterForm
+    return render(request, 'users/register.html', {'form': form})
 
+
+"""
+    form = UserRegisterForm
+
+    return render(request=request,
+                  template_name="index/register.html",
+                  context={"form": form})
+"""

@@ -3,19 +3,19 @@
 </head>
 
 <body>
+
+    {% include "index/includes/navbar.html" %}
+
+    {% include "index/includes/messages.html" %}
+
+
     <div class="container">
         <br>
         {% block content %}
         {% endblock %}
     </div>
-    <p>
-          connexion <br>
-        Input <br>
-            jqueryui.autocomplete <br>
-            research <br>
-                result <br>
 
-    </p>
+
     <div>
         <ul>
             <li>
