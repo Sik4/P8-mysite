@@ -1,12 +1,15 @@
 <div class="future navbar">
     {% if user.is_authenticated %}
-        <a href="register/">{{user.username}}</a> <br>
-        logout (todo)
+        <a href="{% url 'users:register' %}">{{user.username}}</a> <br>
+        <a href="{% url 'users:logout' %}">Logout</a> <br>
 
     {% else %}
-        <a href="register/">Register</a> <br>
-        login (todo)
+        <a href="{% url 'users:register' %}">Register</a> <br>
+        <a href="{% url 'users:login' %}">Login</a> <br>
     {% endif %}
+
+    <br>
+    <br>
 
         Input <br>
             jqueryui.autocomplete <br>
